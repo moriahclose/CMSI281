@@ -9,6 +9,6 @@ public class SayHello {
        Scanner nameScanner = new Scanner(System.in);
        System.out.println( "What is your name?" );
        String userName = nameScanner.next();
-      System.out.println( "\n  Hello, " + userName + "!" );
+       System.out.println( "\n  Hello, " + userName + "!" );
    }
 }
