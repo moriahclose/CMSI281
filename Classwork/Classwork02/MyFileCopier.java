@@ -8,9 +8,10 @@ import java.util.Scanner;
 
 public class MyFileCopier {
 
+    private static final String OUTPUT_FILE_NAME = "output.txt";
 
     public MyFileCopier() {
-
+        super();
     }
 
     public static void main(String args[] ) {
@@ -19,7 +20,10 @@ public class MyFileCopier {
         System.out.println( "Please enter a file name: " );
         String fileName = fileNameScanner.next();
 
+        //get the contents of the source file
         SourceFile sourceFile = new SourceFile( fileName );
+
+        TargetFile targetFile = new TargetFile( fileName , OUTPUT_FILE_NAME );
     }
 
 }
