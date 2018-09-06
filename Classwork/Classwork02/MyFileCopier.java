@@ -8,8 +8,6 @@ import java.util.Scanner;
 
 public class MyFileCopier {
 
-    private static final String OUTPUT_FILE_NAME = "output.txt";
-
     public MyFileCopier() {
         super();
     }
@@ -22,8 +20,9 @@ public class MyFileCopier {
 
         //get the contents of the source file
         SourceFile sourceFile = new SourceFile( fileName );
-
-        TargetFile targetFile = new TargetFile( fileName , OUTPUT_FILE_NAME );
+        sourceFile.close();
+        TargetFile targetFile = new TargetFile( fileName , sourceFile.getContents() );
+        targetFile.close();
     }
 
 }

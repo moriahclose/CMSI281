@@ -11,6 +11,7 @@ public class SourceFile {
 
     private static String fileName;
     private static String fileContents;
+    private static char[] fileContentsArray;
     private static FileReader fileReader;
 
     public SourceFile( String inputFileName ) {
@@ -38,9 +39,14 @@ public class SourceFile {
         fileContents = fileContents.substring( 0, fileContents.length()-1 );
     }
 
-    
+
     public static String getContents() {
         return fileContents;
+    }
+
+    public static void close() {
+        try { fileReader.close(); }
+        catch( Exception e ) { System.out.println( e ); }
     }
 
     public static void main(String args[] ) {
