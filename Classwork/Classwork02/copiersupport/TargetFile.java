@@ -25,7 +25,7 @@ public class TargetFile {
 
         //make sure file writer is properly created
         try {
-            fileWriter = new FileWriter( outputFileName , true);
+            fileWriter = new FileWriter( outputFileName , false);
         }
         catch( Exception e ) {
             System.out.println( e );
