@@ -1,7 +1,6 @@
-/*****************************************************************************
-Name: Moriah Tolliver         Date: 01/15/18          Purpose: Greet the Copy a file
-Referenced Greeter.java from my own CMSI186 repository
-******************************************************************************/
+/********************************************************************************************************************
+Author: Moriah Tolliver         Date: 09/06/2018          Purpose: Enter the contents of an input file into a new file
+********************************************************************************************************************/
 package copiersupport;
 
 import java.io.FileWriter;
@@ -20,28 +19,28 @@ public class TargetFile {
 
         //initialize file variables
         sourceFileName = inputSourceFileName;
-        outputFileName = sourceFileName + "copy.txt";
+        outputFileName = sourceFileName + ".copy";
         fileContents = inputFileContents;
 
         //make sure file writer is properly created
         try {
-            fileWriter = new FileWriter( outputFileName , false);
+            fileWriter = new FileWriter( outputFileName , APPEND_TO_FILE);
         }
         catch( Exception e ) {
             System.out.println( e );
         }
 
-        //add all characters in file to output file
+        //add all characters in source file to output file
         try { fileWriter.write( fileContents ); }
         catch( Exception e ) { System.out.println( e ); }
+    }
+
+    public static String getTargetFileName() {
+        return outputFileName;
     }
 
     public static void close() {
         try { fileWriter.close(); }
         catch( Exception e ) { System.out.println( e ); }
     }
-
-    public static void main(String args[] ) {
-    }
-
 }

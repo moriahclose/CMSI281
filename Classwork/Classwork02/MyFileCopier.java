@@ -1,7 +1,6 @@
-/*****************************************************************************
-Name: Moriah Tolliver         Date: 01/15/18          Purpose: Greet the Copy a file
-Referenced Greeter.java from my own CMSI186 repository
-******************************************************************************/
+/*****************************************************************************************************
+Author: Moriah Tolliver         Date: 09/06/2018          Purpose: Copy an existing file into a new file
+*****************************************************************************************************/
 
 import copiersupport.*;
 import java.util.Scanner;
@@ -21,8 +20,12 @@ public class MyFileCopier {
         //get the contents of the source file
         SourceFile sourceFile = new SourceFile( fileName );
         sourceFile.close();
+
+        //copy the contents of the source file into the new file
         TargetFile targetFile = new TargetFile( fileName , sourceFile.getContents() );
         targetFile.close();
+
+        System.out.println( "File copied into " + targetFile.getTargetFileName() );
     }
 
 }

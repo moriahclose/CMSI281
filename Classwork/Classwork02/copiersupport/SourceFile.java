@@ -1,7 +1,6 @@
-/*****************************************************************************
-Name: Moriah Tolliver         Date: 01/15/18          Purpose: Greet the Copy a file
-Referenced Greeter.java from my own CMSI186 repository
-******************************************************************************/
+/*******************************************************************************************************
+Author: Moriah Tolliver         Date: 09/06/2018         Purpose: Read and return the contents of a file
+*******************************************************************************************************/
 package copiersupport;
 
 import java.io.FileReader;
@@ -11,7 +10,6 @@ public class SourceFile {
 
     private static String fileName;
     private static String fileContents;
-    private static char[] fileContentsArray;
     private static FileReader fileReader;
 
     public SourceFile( String inputFileName ) {
@@ -48,8 +46,4 @@ public class SourceFile {
         try { fileReader.close(); }
         catch( Exception e ) { System.out.println( e ); }
     }
-
-    public static void main(String args[] ) {
-    }
-
 }
