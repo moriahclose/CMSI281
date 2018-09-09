@@ -6,5 +6,5 @@ Nice job on this assignment, with a couple of comments:
 
 Try to make your indenting consistent throughout your code.
 
-You get 97% out of 100% on this.
+You get 98% out of 100% on this.
 
