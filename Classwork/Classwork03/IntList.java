@@ -1,6 +1,8 @@
 /****************************************************
-Author: Professor Johnson Editor: Moriah Tolliver
-Date: 09/12/18 Purpose: Create a List implementation
+Author: Professor Johnson
+Editor: Moriah Tolliver
+Date: 09/12/18
+Purpose: Create a List implementation
 *****************************************************/
 public class IntList implements IntListInterface {
       private int[] theList;
@@ -54,6 +56,7 @@ public class IntList implements IntListInterface {
           }
       }
 
+      //adds more space to a list
       private void addCapacity() {
           int[] theListTemp = new int[theList.length + STARTING_SIZE];
           for ( int j = 0; j < size; j++ ) {
@@ -89,60 +92,70 @@ public class IntList implements IntListInterface {
           return true;
       }
 
-      // 3 6 18 9 2
-      //
-      //insertValueAtIndex( 11,2)
-
       public String toString() {
         String listString = "";
-        for ( int i = 0; i < size-1; i++ ) {
+        for ( int i = 0; i < size; i++ ) {
             listString += ( theList[i] == 0 ) ? "[ ]" : "[ " + theList[i] + " ]";
         }
         return listString;
       }
 
-
+      //main for testing
       public static void main( String[] args ) {
         IntList list = new IntList();
+
+        //testing append
         list.append( 1 );
         list.append( 2 );
         list.append( 3 );
         list.append( 4 );
         list.append( 5 );
+        System.out.println( list.toString() );
+
+        //testing getValueAtIndex
+        System.out.println( "Value at index 0: " + list.getValueAtIndex( 0 ) );
+        System.out.println( "Value at index 1: " + list.getValueAtIndex( 1 ) );
+        System.out.println( "Value at index 2: " + list.getValueAtIndex( 2 ) );
+        System.out.println( "Value at index 3: " + list.getValueAtIndex( 3 ) );
+        System.out.println( "Value at index 4: " + list.getValueAtIndex( 4 ) );
+
+        //testing prepend
         list.append( 6 );
+        System.out.println( "Appending 6" );
         list.append( 7 );
+        System.out.println( "Appending 7" );
         list.append( 8 );
+        System.out.println( "Appending 8" );
         list.append( 9 );
+        System.out.println( "Appending 9" );
         list.append( 10 );
-        list.append( 11 );
-        list.append( 12 );
-        list.append( 13 );
-        list.append( 14 );
-        list.append( 15 );
-        list.append( 16 );
-        list.append( 17 );
-        list.append( 18 );
-        list.append( 19 );
-        System.out.println( list.toString() );
-        System.out.println( list.insertValueAtIndex( 777 , 3 ) );
-        System.out.println( list.toString() );
-        System.out.println( list.removeValueAtIndex( 3 ) );
-        System.out.println( list.toString() );
-        System.out.println( list.prepend( 987 ) );
-        System.out.println( list.toString() );
+        System.out.println( "Appending 10" );
+        System.out.println( list.toString() + "\n" );
 
-        IntList list2 = new IntList();
-        System.out.println( list2.removeValueAtIndex( 1 ) );
-        // list.removeValueAtIndex( 5 );
-        // System.out.println( list.toString() );
+        //testing removeValueAtIndex
+        System.out.println( "Removing all odds" );
+        list.removeValueAtIndex( 0 );
+        list.removeValueAtIndex( 1 );
+        list.removeValueAtIndex( 2 );
+        list.removeValueAtIndex( 3 );
+        list.removeValueAtIndex( 4 );
+        System.out.println( list.toString() + "\n" );
 
-         // System.out.println( list.toString() );   // should return the value 7
-         // System.out.println( list.toString() );
-         // list.removeValueAtIndex( 3 );
-         // list.removeValueAtIndex( 5 );
-         // System.out.println( list.toString() );
-         // System.out.println( list.getValueAtIndex( 3 ) );      // should return the value 11
-         // System.out.println( list.getValueAtIndex( 18 ) );     // just to see what happens
+        //testing insertValueAtIndex
+        System.out.println( "Inserting negative odds" );
+        list.insertValueAtIndex( -1 , 0 );
+        list.insertValueAtIndex( -3 , 2 );
+        list.insertValueAtIndex( -5 , 4 );
+        list.insertValueAtIndex( -7 , 6 );
+        list.insertValueAtIndex( -9 , 8 );
+        System.out.println( list.toString() + "\n" );
 
+
+        //testing prepend
+        System.out.println( "Prepending pallindromes" );
+        list.prepend( 98789 );
+        list.prepend( 11122111 );
+        list.prepend( 0101010 );
+        System.out.println( list.toString() );
       }
    }
