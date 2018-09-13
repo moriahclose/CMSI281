@@ -2,7 +2,6 @@
 Author: Professor Johnson Editor: Moriah Tolliver
 Date: 09/12/18 Purpose: Create a List implementation
 *****************************************************/
-
 public class IntList implements IntListInterface {
       private int[] theList;
       private int   size;
@@ -14,7 +13,7 @@ public class IntList implements IntListInterface {
          size = 0;
       }
 
-      public int getValueAtIndex( int index ) throws ArrayIndexOutOfBoundsException {
+      public int getValueAtIndex( int index ) throws EmptyListException, ArrayIndexOutOfBoundsException {
          checkIndex( index );
          return theList[index];
       }
@@ -26,6 +25,16 @@ public class IntList implements IntListInterface {
          theList[size] = valueToAdd;
          size++;
          return true;
+      }
+
+      public boolean prepend( int valueToAdd ) {
+          if( size >= theList.length ) {
+             addCapacity();
+          }
+          holeMaker( 0 );
+          theList[ 0 ] = valueToAdd;
+          size++;
+          return true;
       }
 
       private void holeFiller( int index ) {
@@ -53,7 +62,7 @@ public class IntList implements IntListInterface {
           theList = theListTemp;
       }
 
-      public int removeValueAtIndex( int index ) throws ArrayIndexOutOfBoundsException {
+      public int removeValueAtIndex( int index ) throws EmptyListException, ArrayIndexOutOfBoundsException {
           checkIndex( index );
           int value = theList[index];
           holeFiller( index );
@@ -63,7 +72,7 @@ public class IntList implements IntListInterface {
       // Throws exception for an invalid index
       public void checkIndex( int index ) {
           if( size == 0 ) {
-             System.out.println( "The list is empty!" );
+            throw new EmptyListException( "The list is empty!" );
           } else if( index > size ) {
              throw new ArrayIndexOutOfBoundsException( "The index value is too large" );
           } else if( index < 0 ) {
@@ -119,6 +128,11 @@ public class IntList implements IntListInterface {
         System.out.println( list.toString() );
         System.out.println( list.removeValueAtIndex( 3 ) );
         System.out.println( list.toString() );
+        System.out.println( list.prepend( 987 ) );
+        System.out.println( list.toString() );
+
+        IntList list2 = new IntList();
+        System.out.println( list2.removeValueAtIndex( 1 ) );
         // list.removeValueAtIndex( 5 );
         // System.out.println( list.toString() );
 

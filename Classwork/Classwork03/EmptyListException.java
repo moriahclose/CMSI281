@@ -5,7 +5,7 @@ Date: 9/13/2018
 Purpose: create an exception to throw when trying to perform operations on an empty list
 ***************************************************************************************/
 
-public class EmptyListException extends Exception
+public class EmptyListException extends ArrayIndexOutOfBoundsException
 {
       // Parameterless Constructor
       public EmptyListException() {
@@ -13,7 +13,7 @@ public class EmptyListException extends Exception
       }
 
       // Constructor that accepts a message
-      public EmptyListException(String message)
+      public EmptyListException( String message )
       {
          super(message);
       }
