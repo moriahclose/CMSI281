@@ -25,5 +25,30 @@ public class HighArrayApp {
         arr.delete(99);
 
         arr.display();
+
+        //testing getMax()
+        System.out.println( "Max nubmer: " + arr.getMax() );
+
+        arr.insert( -999 );
+        arr.display();
+        System.out.println( "Max nubmer: " + arr.getMax() );
+
+        arr.insert( 77 );
+        arr.display();
+        System.out.println( "Max nubmer: " + arr.getMax() );
+
+        arr.delete( 88 );
+        arr.display();
+        System.out.println( "Max nubmer: " + arr.getMax() );
+
+        arr.insert( 123 );
+        arr.display();
+        System.out.println( "Max nubmer: " + arr.getMax() );
+
+        arr.delete( 77 );
+        arr.delete( 66 );
+        arr.delete( 123 );
+        arr.display();
+        System.out.println( "Max nubmer: " + arr.getMax() );
     }
 }
