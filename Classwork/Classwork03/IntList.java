@@ -1,5 +1,5 @@
 /****************************************************
-Author: Professor Johnson
+Author: B.J. Johnson
 Editor: Moriah Tolliver
 Date: 09/12/18
 Purpose: Create a List implementation
