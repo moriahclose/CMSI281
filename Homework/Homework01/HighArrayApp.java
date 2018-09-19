@@ -1,3 +1,12 @@
+/*********************************************************
+Author: Robert Lafore
+Edited by Moriah Tolliver and Tapiwa Tafa to fit styling preferences
+Purpose Demonstrates array class with high-level interface
+**********************************************************/
+
+/**
+* Class with main used for testing
+**/
 public class HighArrayApp {
     public static void main( String args[] ) {
         int maxSize = 100;
