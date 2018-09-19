@@ -1,6 +1,6 @@
 /*********************************************************
 Author: Robert Lafore
-Edited by Moriah Tolliver and Tapiwa Tafa to fit styling preferences
+Editors: Moriah Tolliver and Tapiwa Tafa
 Purpose Demonstrates array class with high-level interface
 **********************************************************/
 
