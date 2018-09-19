@@ -1,8 +1,8 @@
-/**
+/************************************
 * Author: B.J. Johnson
-* Editor:
+* Editor: Moriah Tolliver
 * Purpose: Test IntLinkedList class
-**/
+*************************************/
 public class IntLinkedListTester {
 
       public static void main( String[] args ) {
