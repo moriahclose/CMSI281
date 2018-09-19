@@ -9,8 +9,9 @@ class HighArray {
     private int nElems;  // number of data items
     private static final long EMPTY_ARRAY = -1;
 
-    /*
+    /**
     * Constructor
+    * @param int value of maximum capacity of the HighArray
     */
     public HighArray( int max ) {
         a = new long[max];
@@ -19,6 +20,7 @@ class HighArray {
 
     /**
     * Returns boolean if input value is found in HighArray
+    * @param long value to search for
     * @return boolean true if value is in HighArray, false otherwise
     */
     public boolean find( long searchKey ) {
@@ -32,6 +34,7 @@ class HighArray {
 
     /**
     * Inserts input value to front of HighArray
+    * @param long value to insert
     */
     public void insert( long value ) {
         a[nElems] = value;
@@ -40,6 +43,7 @@ class HighArray {
 
     /**
     * Deletes all instances of a value from the HighArray
+    * @param long value to delete
     * @return boolean true if value has been deleted, false otherwise
     */
     public boolean delete( long value ) {
@@ -95,30 +99,29 @@ class HighArray {
 
     /**
     * Moves elements of HighArray down to replace deleted element
-    *  
+    * @param int index of value to replace
+    */
     public void holeFiller( int index ) {
         for ( int i = index; i < nElems; i++ ) {
             a[i] = a[i + 1];
         }
     }
 
-    //removes duplicate elements
-    //returns true if duplicates are removed and false if nothing is removed
-    public boolean noDups() {
+    /**
+    * Removes duplicate values from HighArray
+    */
+    public void noDups() {
         HighArray dupless = new HighArray( a.length ); //will be temp HighArray holding only one copy of each number in a
-        boolean didRemovedDup = false; //true if a duplicate element is removed, false otherwise
 
         int tempNumElems = 0; //will construct new array without duplicates so setting number of elements to 0
 
         for ( int i = 0; i < nElems; i++ ) {
             if ( !dupless.find( a[i] ) ) {
                 dupless.insert( a[i] );
-                didRemovedDup = true;
                 tempNumElems++;
             }
         }
         this.a = dupless.getArray();
         this.nElems = tempNumElems;
-        return didRemovedDup;
     }
 }
