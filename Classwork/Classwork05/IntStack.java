@@ -5,32 +5,58 @@
 *************************************************************/
 public class IntStack {
 
-      IntLinkedList myStack;
+      IntLinkedList myStack; //linked list representation of stack
 
+      /**
+       * Constructor
+       */
       IntStack() {
-         myStack = new IntLinkedList();         // constructor
+         myStack = new IntLinkedList();
       }
 
+      /**
+       * Adds element of input value to stack
+       * @param int value to add to stack
+       */
       public void push( int itemToPush ) {
          myStack.prepend( itemToPush );
       }
 
+      /**
+       * Returns last element put in stack
+       * @return int value of element at top of stack
+       */
       public int peek() {
          return myStack.getIteratorAt( 0 ).getCurrentInt();     // we use the iterator
       }
 
+      /**
+       * Removes last element added to stack
+       * @return int value removed from stack
+       */
       public int pop() {
          return myStack.removeAt( 0 );
       }
 
+      /**
+       * Returns number of elements in stack
+       * @return int number of elements in stack
+       */
       public int getSize() {
           return myStack.getSize();
       }
 
+      /**
+       * Displays string representation of stack
+       * @return string representation where left is last inserted
+       */
       public String toString() {
           return myStack.toString();
       }
 
+      /**
+       * Main used for testing
+       */
       public static void main( String[] args ) {
          IntStack testStack = new IntStack();
 
@@ -93,6 +119,7 @@ public class IntStack {
          catch( Exception e ) {
              System.out.println( e );
          }
+         //should print error
          try {
              System.out.println( "Peek: " + testStack.peek() + " Pop: " + testStack.pop() );
          }
