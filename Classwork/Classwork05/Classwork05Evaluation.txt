@@ -1,0 +1,32 @@
+
+Classwork05 Evaluation
+======================
+
+Nice job on this assignment, with a couple of comments:
+
+Very good work on the testing; I like the way you show the
+details of the tests in the output.  Very friendly!  Also
+you seem to have a good grasp of the ideas for making the
+tests descriptive, and the coverage is very good!
+
+Nice work on the toString() method!
+
+Keep up the good work!
+
+scores:
+=============================
+IntLinkedList.java
+   compiles                [1.00]
+IntQueue.java
+   changed to Queue name   [1.00]
+   changed to enqueue()    [1.00]
+   changed to dequeue()    [1.00]
+IntQueueTester.java
+   test coverage (3)       [3.00]
+headers(3)                 [3.00]
+code style                 [1.00]
+
+total possible points      11 points
+
+you got 11 out of 11 which is 100% which is an A-plus
+
