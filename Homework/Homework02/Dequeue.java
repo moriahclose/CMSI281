@@ -22,7 +22,10 @@ public class Dequeue {
         nItems = 0;
     }
 
-    
+    /**
+     * Inserts item at front of dequeue
+     * @param long value to insert
+     */
     public void insertLeft( long j ) {
         if ( front == 0 ) {
             front = maxSize;
@@ -31,6 +34,10 @@ public class Dequeue {
         nItems++;
     }
 
+    /**
+     * Inserts item at rear of dequeue
+     * @param long value to insert
+     */
     public void insertRight( long j ) {
         if ( rear == maxSize-1 ) { // deal with wraparound
             rear = -1;
@@ -39,6 +46,10 @@ public class Dequeue {
         nItems++;                // one more item
     }
 
+    /**
+     * Removes item at front of dequeue
+     * @return long value removed
+     */
     public long removeLeft() {
         long temp = dequeueArray[front++]; // get value and increment front
         if ( front == maxSize ) {           // deal with wraparound
@@ -48,6 +59,10 @@ public class Dequeue {
         return temp;
     }
 
+    /**
+     * Removes item at rear of dequeue
+     * @return long value removed
+     */
     public long removeRight() {
         long temp = dequeueArray[rear--]; // get value and increment front
         if ( rear == -1 ) {                 // deal with wraparound
@@ -57,14 +72,25 @@ public class Dequeue {
         return temp;
     }
 
+    /**
+     * Retruns true if dequeue is empty and false otherwise
+     * @return boolean true if dequeue is empty and false otherwise
+     */
     public boolean isEmpty() {
         return ( nItems == 0 );
     }
 
+    /**
+     * Retruns true if dequeue is full and false otherwise
+     * @return boolean true if dequeue is full and false otherwise
+     */
     public boolean isFull() {
         return ( nItems == maxSize );
     }
 
+    /**
+     * Displays elements in the dequeue from front to rear
+     */
     public void display() {
         int index = front;
         for ( int count = 0; count < nItems; count++ ) {
@@ -76,10 +102,12 @@ public class Dequeue {
                 index++;
             }
         }
-
         System.out.println();
     }
 
+    /**
+     * Main to test methods
+     */
     public static void main( String args[] ) {
         Dequeue theDequeue = new Dequeue( 5 );
 

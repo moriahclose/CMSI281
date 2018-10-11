@@ -70,6 +70,9 @@ public class Queue  {
         return nItems;
     }
 
+    /**
+     * Displays elements in queue from front to rear
+     */
     public void displayQueue() {
         int index = front;
         for ( int count = 0; count < nItems; count++ ) {
