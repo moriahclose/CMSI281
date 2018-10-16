@@ -1,7 +1,7 @@
 /***********************************************************************
 Author: Robert Lafore
 Editors: Moriah Tolliver and Tapiwa Tafa
-Purpose: Demonstrates circular linked list that takes objects as values
+Purpose: Demonstrates circular linked list that takes ints as values
 ***********************************************************************/
 
 public class CircularList {

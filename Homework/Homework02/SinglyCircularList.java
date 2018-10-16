@@ -1,14 +1,18 @@
-/*
-Project Name: Singly Linked Circular List
-
-Authors: Tapiwa Tafa and Moriah Tolliver
-
-*/
-
+/***********************************************************************
+Author: Robert Lafore
+Editors: Moriah Tolliver and Tapiwa Tafa
+Purpose: Demonstrates circular linked list that takes ints as values
+***********************************************************************/
 
 public class SinglyCircularList {
 
+    private  NodeS head = null;
+    private  NodeS tail = null;
+    private static int size = 0;
 
+    /**
+     * Internal class that creates node object
+     */
     public class NodeS {
 
         public int num;
@@ -18,14 +22,19 @@ public class SinglyCircularList {
             this.num = n;
         }
     }
-    private  NodeS head = null;
-    private  NodeS tail = null;
-    private static int size = 0;
 
+    /**
+     * Return number of elements in list
+     * @return int size of list
+     */
     public static int getSize() {
         return size;
     }
 
+    /**
+     * Insert value in list
+     * @param int value to insert
+     */
     public void insert(int n) {
         NodeS node = new NodeS(n);
         node.next = tail;
@@ -38,6 +47,10 @@ public class SinglyCircularList {
         size++;
     }
 
+    /**
+     * Delete last value inserted
+     * @return int value deleted or -1 if no value was deleted
+     */
     public int delete() {
         if (!isEmpty()) {
             NodeS deq = tail;
@@ -54,10 +67,17 @@ public class SinglyCircularList {
         return -1;
     }
 
+    /**
+     * Return boolean for whether list is empty
+     * @return boolean true if list is empty, false otherwise
+     */
     public static boolean isEmpty() {
         return size == 0;
     }
 
+    /**
+     * Display contents of list
+     */
     public void printList() {
         NodeS temp = tail;
         for (int i = 0; i < size; i++) {
@@ -70,6 +90,7 @@ public class SinglyCircularList {
     }
 
     /**
+     * Main used for testing
      * @param args
      */
     public static void main(String[] args) {
