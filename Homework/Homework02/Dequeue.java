@@ -3,6 +3,7 @@ Author: Robert Lafore
 Editors: Moriah Tolliver and Tapiwa Tafa
 Purpose: Demonstrates dequeue
 **********************************************************/
+
 public class Dequeue {
     private int maxSize;
     private long[] dequeueArray;
