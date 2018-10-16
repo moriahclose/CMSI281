@@ -2,7 +2,7 @@
 Author: Robert Lafore
 Editors: Moriah Tolliver and Tapiwa Tafa
 Purpose: Demonstrates circular linked list that takes objects as values
-******************************************************************/
+***********************************************************************/
 public class CircularList {
     private Node current;
     private int  size;
@@ -34,21 +34,10 @@ public class CircularList {
     }
 
     /**
-     * Returns number of elements in the list
-     * @return int number of elements in the list
+     * Moves current to next node
      */
-    public int getSize() {
-       return size;
-    }
-
-    /**
-     * Moves current to next node an input amount of times
-     * @param int number of steps for current to go
-     */
-     public void step( int numOfSteps ) {
-         for ( int i = 0; i < numOfSteps; i++ ) {
-             current = current.next;
-         }
+     public void step() {
+        current = current.next;
      }
 
     /**
@@ -75,10 +64,16 @@ public class CircularList {
     /**
      * Search for value in the list
      * @param int value to search for
-     * @return int index where value was found or -1 if value was not found
+     * @return boolean true if value was found, false otherwise
      */
-    public int find( int value ) {
-        return -1;
+    public boolean find( int value ) {
+        for ( int i = 0; i < size; i++ ) {
+            if ( current.data == value ) {
+                return true;
+            }
+            step();
+        }
+        return false;
     }
 
     /**
@@ -86,18 +81,27 @@ public class CircularList {
      * @param int value to remove
      */
     public void remove( int value ) {
-
+        for ( int i = 0; i < size; i++ ) {
+            if ( current.next.data == value ) {
+                current.next = current.next.next;
+                size--;
+            }
+            step();
+        }
     }
 
     public String toString() {
         String stringRepresenation = "";
         for ( int i = 0; i < size; i++ ) {
             stringRepresenation += current.data + " ";
-            step( 1 );
+            step();
         }
         return stringRepresenation;
     }
 
+    /**
+     * Main used for testing
+     */
     public static void main ( String args[] ) {
 
         CircularList theList = new CircularList();
@@ -109,12 +113,22 @@ public class CircularList {
         theList.insert(  10 );
         System.out.println( "   Inserting 15" );
         theList.insert( 15 );
-        System.out.println( "   Inserting 20" );
+        System.out.println( "   Inserting 20gi" );
         theList.insert( 20 );
         System.out.println( "   The list: " + theList.toString() );
 
+        System.out.println( "---------------TESTING find---------------");
+        System.out.println( ( theList.find( 5 ) ) ? "   Found 5" :  "   Could not find 5" );
+        System.out.println( ( theList.find( -5 ) ) ? "   Found -5" :  "   Could not find -5" );
+        System.out.println( ( theList.find( 20 ) ) ? "   Found 20" :  "   Could not find 20" );
 
-
-
+        System.out.println( "---------------TESTING remove---------------");
+        System.out.println( "   The list: " + theList.toString() );
+        theList.remove( 5 );
+        System.out.println( "   The list without 5: " + theList.toString() );
+        theList.remove( 10 );
+        System.out.println( "   The list without 10: " + theList.toString() );
+        theList.remove( 25 );
+        System.out.println( "   The list without 25: " + theList.toString() );
     }
 }
