@@ -3,6 +3,7 @@ Author: Robert Lafore
 Editors: Moriah Tolliver and Tapiwa Tafa
 Purpose: Demonstrates circular linked list that takes objects as values
 ***********************************************************************/
+
 public class CircularList {
     private Node current;
     private int  size;
@@ -67,12 +68,15 @@ public class CircularList {
      * @return boolean true if value was found, false otherwise
      */
     public boolean find( int value ) {
+        Node currentPointer = current;  //keep track of where current is
         for ( int i = 0; i < size; i++ ) {
             if ( current.data == value ) {
+                current = currentPointer;
                 return true;
             }
             step();
         }
+        current = currentPointer;
         return false;
     }
 
@@ -81,22 +85,31 @@ public class CircularList {
      * @param int value to remove
      */
     public void remove( int value ) {
+        Node currentPointer = current;
         for ( int i = 0; i < size; i++ ) {
             if ( current.next.data == value ) {
+                if ( current.next.data == currentPointer.data ) {
+                    currentPointer = current;
+                }
                 current.next = current.next.next;
                 size--;
             }
             step();
         }
+        current = currentPointer;
     }
 
     public String toString() {
         String stringRepresenation = "";
         for ( int i = 0; i < size; i++ ) {
-            stringRepresenation += current.data + " ";
             step();
+            stringRepresenation += current.data + " ";
         }
         return stringRepresenation;
+    }
+
+    public int getCurrentValue() {
+        return current.data;
     }
 
     /**
@@ -113,7 +126,7 @@ public class CircularList {
         theList.insert(  10 );
         System.out.println( "   Inserting 15" );
         theList.insert( 15 );
-        System.out.println( "   Inserting 20gi" );
+        System.out.println( "   Inserting 20" );
         theList.insert( 20 );
         System.out.println( "   The list: " + theList.toString() );
 
@@ -126,8 +139,8 @@ public class CircularList {
         System.out.println( "   The list: " + theList.toString() );
         theList.remove( 5 );
         System.out.println( "   The list without 5: " + theList.toString() );
-        theList.remove( 10 );
-        System.out.println( "   The list without 10: " + theList.toString() );
+        theList.remove( 20 );
+        System.out.println( "   The list without 20: " + theList.toString() );
         theList.remove( 25 );
         System.out.println( "   The list without 25: " + theList.toString() );
     }
