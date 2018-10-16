@@ -99,6 +99,10 @@ public class CircularList {
         current = currentPointer;
     }
 
+    /**
+     * Returns string representation of list where first inserted is first in string
+     * @return String representing the list
+     */
     public String toString() {
         String stringRepresenation = "";
         for ( int i = 0; i < size; i++ ) {
@@ -108,6 +112,10 @@ public class CircularList {
         return stringRepresenation;
     }
 
+    /**
+     * Return value at current node
+     * @return int value at current node
+     */
     public int getCurrentValue() {
         return current.data;
     }

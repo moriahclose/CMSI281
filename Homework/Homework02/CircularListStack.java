@@ -15,11 +15,19 @@ public class CircularListStack {
         theList = new CircularList();
     }
 
+    /**
+     * Inserts value at end of stack
+     * @param int value to push
+     */
     public void push( int value ) {
         theList.insert( value );
         lastInserted = value;
     }
 
+    /**
+     * Remove value at end of stack and return removed value
+     * @return int value removed
+     */
     public int pop() {
         int removeInt = lastInserted;
         theList.remove( removeInt );
@@ -27,16 +35,26 @@ public class CircularListStack {
         return removeInt;
     }
 
+    /**
+     * Return the value at the end of the stack
+     * @return int value at end of stack
+     */
     public int peek() {
         return theList.getCurrentValue();
     }
 
+    /**
+     * Returns string representation of stack where first inserted is first in string
+     * @return String representing the stack
+     */
     public String toString() {
         return theList.toString();
     }
 
 
-
+    /**
+     * Main used for testing
+     */
     public static void main ( String args[] ) {
         CircularListStack theStack = new CircularListStack();
 
