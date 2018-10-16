@@ -109,7 +109,7 @@ public class Dequeue {
      * Main to test methods
      */
     public static void main( String args[] ) {
-        Dequeue theDequeue = new Dequeue( 6 );
+        Dequeue theDequeue = new Dequeue( 8 );
 
         System.out.println( "---------------TESTING insertRight---------------");
         theDequeue.insertRight( 10 );
@@ -124,61 +124,62 @@ public class Dequeue {
         theDequeue.display();
         System.out.println();
 
-        System.out.println( "---------------TESTING removeLeft---------------");
-        theDequeue.removeLeft();
-        System.out.println( "   Removing left" );
-        System.out.print( "   Dequeue: ");
-        theDequeue.display();
-        theDequeue.removeLeft();
-        System.out.println( "   Removing left" );
-        System.out.print( "   Dequeue: ");
-        theDequeue.display();
-        theDequeue.removeLeft();
-        System.out.println( "   Removing left" );
-        System.out.print( "   Dequeue: ");
-        theDequeue.display();
-        theDequeue.removeLeft();
-        System.out.println( "   Removing left" );
+        System.out.println( "---------------TESTING insertLeft---------------");
+        theDequeue.insertLeft( 11 );
+        System.out.println( "   Inserting 11" );
+        theDequeue.insertLeft( 22 );
+        System.out.println( "   Inserting 22" );
+        theDequeue.insertLeft( 33 );
+        System.out.println( "   Inserting 33" );
+        theDequeue.insertLeft( 44 );
+        System.out.println( "   Inserting 44" );
         System.out.print( "   Dequeue: ");
         theDequeue.display();
         System.out.println();
-        // System.out.println( "---------------TESTING insertLeft---------------");
-        // theDequeue.insertLeft( 13 );
-        // System.out.println( "   Inserting 13" );
-        // theDequeue.insertLeft( 17 );
-        // System.out.println( "   Inserting 17" );
-        // theDequeue.insertLeft( 19 );
-        // System.out.println( "   Inserting 19" );
-        // theDequeue.insertLeft( 23 );
-        // System.out.println( "   Inserting 23" );
-        // theDequeue.display();
 
-        // theDequeue.insertLeft( 50 );
-        // System.out.println( "   Inserting 50 left" );
-        // theDequeue.insertLeft( 60 );
-        // System.out.println( "   Inserting 60 left" );
-        // System.out.println( theDequeue.display();
-        //
-        // System.out.println( "---------------TESTING removeRight---------------");
-        // theDequeue.removeRight();
-        // theDequeue.display();
-        // theDequeue.removeRight();
-        // theDequeue.display();
-        //
-        // System.out.println( "---------------TESTING isEmpty()---------------");
-        // System.out.println( " Dequeue empty? " + theDequeue.isEmpty() );  //false
-        // System.out.println( " Dequeue full? " + theDequeue.isFull() );   //false
-        // theDequeue.insertLeft( 89 );
-        // theDequeue.insertRight( 103 );
-        // theDequeue.display();
-        // theDequeue.getSize();
-        // System.out.println( " Dequeue full? " + theDequeue.isFull() );   //true
-        // theDequeue.removeRight();
-        // theDequeue.removeRight();
-        // theDequeue.removeRight();
-        // theDequeue.removeRight();
-        // theDequeue.removeRight();
-        // theDequeue.display();
-        // System.out.println( " Dequeue empty? " + theDequeue.isEmpty() );  //true
+        System.out.println( "---------------TESTING removeLeft and removeRight---------------");
+        theDequeue.removeLeft();
+        System.out.println( "   Removing left" );
+        System.out.print( "   Dequeue: ");
+        theDequeue.display();
+        theDequeue.removeLeft();
+        System.out.println( "   Removing left" );
+        System.out.print( "   Dequeue: ");
+        theDequeue.display();
+        theDequeue.removeRight();
+        System.out.println( "   Removing right" );
+        System.out.print( "   Dequeue: ");
+        theDequeue.display();
+        theDequeue.removeRight();
+        System.out.println( "   Removing right" );
+        System.out.print( "   Dequeue: ");
+        theDequeue.display();
+        System.out.println();
+
+        System.out.println( "---------------TESTING isEmpty and isFull---------------");
+        System.out.print( "   Dequeue: ");
+        theDequeue.display();
+        System.out.println( "   Dequeue empty? " + theDequeue.isEmpty() );  //false
+        System.out.println( "   Dequeue full? " + theDequeue.isFull() );   //false
+        System.out.println( "   Inserting 4 values" );
+        theDequeue.insertLeft( 89 );
+        theDequeue.insertRight( 103 );
+        theDequeue.insertLeft( 7289 );
+        theDequeue.insertRight( 8 );
+        System.out.print( "   Dequeue: ");
+        theDequeue.display();
+        System.out.println( "   Dequeue full? " + theDequeue.isFull() );   //true
+        System.out.println( "   Removing all values." );
+        theDequeue.removeRight();
+        theDequeue.removeRight();
+        theDequeue.removeRight();
+        theDequeue.removeRight();
+        theDequeue.removeRight();
+        theDequeue.removeRight();
+        theDequeue.removeRight();
+        theDequeue.removeRight();
+        System.out.print( "   Dequeue: ");
+        theDequeue.display();
+        System.out.println( "   Dequeue empty? " + theDequeue.isEmpty() );  //true
     }
 }
