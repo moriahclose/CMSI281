@@ -1,11 +1,15 @@
 /***********************************************************************
 Authors: Tapiwa Tafa and Moriah Tolliver
-Purpose: Demonstrates Huffman tree 
+Purpose: Demonstrates Huffman tree
 *************************************************************************/
 
 import java.io.*;
 import java.util.*;
 
+
+/**
+* Internal class to create a HuffmanNode
+*/
 class HuffmanNode implements Comparable<Object>
 {
 	public String sData;
@@ -13,11 +17,19 @@ class HuffmanNode implements Comparable<Object>
 	public HuffmanNode leftChild;
 	public HuffmanNode rightChild;
 
+	/**
+	 * Display conents of a node and number of times it occurs
+	 */
 	public void displayNode()
 	{
 		System.out.print("{" + sData + ", " + iData + "}");
 	}
 
+	/**
+	 * Compares the contents of the current node and an input node
+	 * @param Object that is being compared to the current object
+	 * @return int difference between data in two nodes
+	 */
 	public int compareTo(Object o)
 	{
 		HuffmanNode node = (HuffmanNode)o;
@@ -31,6 +43,10 @@ class HuffmanTree
 	private String[] codeTable;
 	private String huffmanCode;
 
+	/**
+	 * Constructor
+	 * @param String inital string of characters to be parsed into the tree
+	 */
 	public HuffmanTree(String initString)
 		{
 			huffmanCode = new String();
@@ -81,6 +97,10 @@ class HuffmanTree
 
 		}
 
+	/**
+	 * Create code table
+	 * @param HuffmanNode localRoot
+	 */
 	public void createTable(HuffmanNode localRoot)
 	{
 		if(localRoot.sData != null)
@@ -103,6 +123,11 @@ class HuffmanTree
 		}
 	}
 
+	/**
+	 * Encode the string with binary
+	 * @param String message to encode
+	 * @return String binary string that represents the input string
+	 */
 	public String encode(String message)
 	{
 		String result = new String();
@@ -115,6 +140,11 @@ class HuffmanTree
 		return result;
 	}
 
+	/**
+	 * Change the message from binary to its original form
+	 * @param String message to decode
+	 * @return String original form of the input coded message
+	 */
 	public String decode(String codedMessage)
 	{
 		String result = new String();
@@ -140,6 +170,10 @@ class HuffmanTree
 		return result;
 	}
 
+	/**
+	 * Traverse the tree
+	 * @param int representing what type of traversal of do 1 is preorder, 2 is inorder, and 3 is postorder
+	 */
 	public void traverse(int traverseType)
 	{
 		switch(traverseType)
@@ -157,6 +191,10 @@ class HuffmanTree
 		System.out.println("");
 	}
 
+	/**
+	 * Perform and print preorder tree traversal
+	 * @param HuffmanNode that represents the root of the tree
+	 */
 	private void preOrder(HuffmanNode localRoot)
 	{
 		if(localRoot != null)
@@ -167,6 +205,10 @@ class HuffmanTree
 		}
 	}
 
+	/**
+	 * Perform and print inorder tree traversal
+	 * @param HuffmanNode that represents the root of the tree
+	 */
 	private void inOrder(HuffmanNode localRoot)
 	{
 		if(localRoot != null)
@@ -179,6 +221,10 @@ class HuffmanTree
 		}
 	}
 
+	/**
+	 * Perform and print postorder tree traversal
+	 * @param HuffmanNode that represents the root of the tree
+	 */
 	private void postOrder(HuffmanNode localRoot)
 	{
 		if(localRoot != null)
@@ -189,6 +235,9 @@ class HuffmanTree
 		}
 	}
 
+	/**
+	 * Display the contents of the tree
+	 */
 	public void displayTree()
 	{
 		Stack<HuffmanNode> globalStack = new Stack<HuffmanNode>();
@@ -236,6 +285,10 @@ class HuffmanTree
 		"..................................");
 	}
 }
+
+/**
+* Class to test the HuffmanTree class
+*/
 class HuffmanTreeApp
 {
 	public static void main(String[] args) throws IOException
@@ -275,6 +328,10 @@ class HuffmanTreeApp
 		}
 	}
 
+	/**
+	 * Reads input string
+	 * @return String that was input
+	 */
 	public static String getString() throws IOException
 	{
 		InputStreamReader isr = new InputStreamReader(System.in);
@@ -283,12 +340,20 @@ class HuffmanTreeApp
 		return s;
 	}
 
+	/**
+	 * Get first character of the string
+	 * @return char first character of the string
+	 */
 	public static char getChar() throws IOException
 	{
 		String s = getString();
 		return s.charAt(0);
 	}
 
+	/**
+	 * Get integer representation of line
+	 * @return int representation of string
+	 */
 	public static int getInt() throws IOException
 	{
 		String s = getString();
