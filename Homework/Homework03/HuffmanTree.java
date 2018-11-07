@@ -294,7 +294,7 @@ class HuffmanTreeApp
 	public static void main(String[] args) throws IOException
 	{
 		int value;
-		String initString = "Alleluia, praise the LORD!!!";
+		String initString = "Hey there, friend\nI hope you have a beautiful day.";
 		String encoded = new String();
 		String decoded = new String();
 		HuffmanTree theTree = new HuffmanTree(initString);
