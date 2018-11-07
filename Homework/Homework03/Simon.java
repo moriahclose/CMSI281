@@ -6,6 +6,7 @@ import java.util.*;
 
 class Simon {
 
+    //Main method that runs the game
     public static void main (String[] args) {
         Character[] colorInts  = {'R', 'G', 'B', 'Y'};
 
@@ -19,6 +20,7 @@ class Simon {
         Scanner inputScanner = new Scanner(System.in);
         String inputGuess = "";
 
+        //Keep adding new color character to sequence until player makes a wrong guess
         while ( correctGuess ) {
             int addedCharInt = (int)(Math.floor( Math.random() * 4 ));
             sequence += colorInts[addedCharInt];
