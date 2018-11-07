@@ -28,6 +28,7 @@ class Simon {
             System.out.println( "The sequence is: " );
             for ( char color : sequence.toCharArray() ) {
                 System.out.print( color );
+                backspaceString += "\b";
                 try {
                     Thread.sleep( 1000 );
                 }
@@ -35,6 +36,7 @@ class Simon {
                     Thread.currentThread().interrupt();
                 }
             }
+            System.out.print( backspaceString );
             System.out.print("\n Enter the sequence: " );
             inputGuess = inputScanner.next();
 
