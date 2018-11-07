@@ -1,6 +1,6 @@
 /***********************************************************************
 Authors: Moriah Tolliver and Tapiwa Tafa
-Purpose: run game "Simon" with user input 
+Purpose: run game "Simon" with user input
 *************************************************************************/
 import java.util.*;
 
@@ -21,19 +21,19 @@ class Simon {
 
         while ( correctGuess ) {
             int addedCharInt = (int)(Math.floor( Math.random() * 4 ));
-            sequence += colorInts[addedCharInt] + " ";
+            sequence += colorInts[addedCharInt];
 
             System.out.println( "The sequence is: " );
             for ( char color : sequence.toCharArray() ) {
+                System.out.print( color );
                 try {
                     Thread.sleep( 1000 );
                 }
                 catch (InterruptedException ex) {
                     Thread.currentThread().interrupt();
                 }
-                System.out.print( color );
             }
-            System.out.println("\n Enter the sequence: " );
+            System.out.print("\n Enter the sequence: " );
             inputGuess = inputScanner.next();
 
             if ( inputGuess.equals(sequence) ) {
@@ -41,7 +41,7 @@ class Simon {
             }
             else {
                 correctGuess = false;
-                System.out.println( "Oops! The sequence was " + sequence + "but you typed " + inputGuess);
+                System.out.println( "Oops! The sequence was " + sequence + " but you typed " + inputGuess);
             }
 
         }
