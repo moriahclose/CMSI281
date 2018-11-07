@@ -1,3 +1,8 @@
+/***********************************************************************
+Authors: Tapiwa Tafa and Moriah Tolliver
+Purpose: Demonstrates Huffman tree 
+*************************************************************************/
+
 import java.io.*;
 import java.util.*;
 
