@@ -1,0 +1,81 @@
+
+Homework03 Evaluation
+======================
+
+Nice work on this assignment!
+Here are a couple of observations and comments:
+
+Your code is VERY nice.  The odd-even sort works great,
+and you did a good job specifying what you are testing to
+the output.  Good test coverage, too, checking that it
+works with an already-sorted array.
+
+Simon game is well-done and works as advertised, although I
+had to fix one compile error where there was a misspelled
+variable name: you had "backsaceString" which is missing the
+"p" in "backpsace".  There were two places in the code where 
+this occurred, and because it was simple I fixed them with
+no penalty.
+
+However....
+
+The HuffmanTree.java is a direct copy from someone else
+who has done the work.  I searched your initial class
+definition from your file and found that there is a GitHub
+repository that has the answers to the book problems.  The
+code that is provided for the Huffman problem is IDENTICAL
+to your code, except you have added some comments.  You did
+NOT provide a link or citation to that code, so I cannot
+give you any credit for it.  THIS IS PLAGIARISM, PLAIN AND
+SIMPLE!!  If this happens again, you will not only NOT get
+credit for the problem, but you WILL get a zero on the
+entire assignment.  This is LMU policy.  In addition, if it
+happens a third time, you might be subject to failing the
+course, which is also LMU policy.
+
+I have said before that I prefer that you *do your own work*
+to solve the problems, but that I don't mind if you find code
+on the Internet that helps with the problem, AS LONG AS YOU
+CITE WHERE IT CAME FROM AND CAN UNDERSTAND WHAT IT DOES WHEN
+I ASK YOU ABOUT IT.  Those two stipulations are the key here,
+and are set down in print on the class syllabus page.
+
+Please don't do this again.
+
+
+scores:
+=============================
+XXXXX-Sorter.java
+   oddEvenSort implemented                   [1 pt.]
+   compiles                                  [1 pt.]
+   works as advertised                       [1 pt.]
+
+SimonGame.java
+   randomized array                          [1 pt.]
+   display/erase sequences                   [1 pt.]
+   check user's guess against array          [1 pt.]
+   increment letter count each iteration     [1 pt.]
+   play again message on incorrect entry     [1 pt.]
+   compiles                                  [1 pt.]
+   works as advertised                       [1 pt.]
+
+HuffmanCoding.java
+   count character occurrences               [0 pt.]
+   use some sort of queue to build tree      [0 pt.]
+   tree constructed correctly                [0 pt.]
+   message encoded correctly                 [0 pt.]
+   message decoded correctly                 [0 pt.]
+   compiles                                  [0 pt.]
+   works as advertised                       [0 pt.]
+
+Coding style                                 [1 pt.]
+Tests written to test all classes            [1 pt.]
+Headers in all files                         [1 pt.]
+
+Total credit is 13 for Sorter and either Simon or Huffman
+ extra credit is 7 points for other of Simon or Huffman
+-------------------------
+ Grand total is 20 points for all three
+
+you got 13 out of 13 which is 100% which is an A-plus
+

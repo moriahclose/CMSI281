@@ -24,7 +24,7 @@ class Simon {
         while ( correctGuess ) {
             int addedCharInt = (int)(Math.floor( Math.random() * 4 ));
             sequence += colorInts[addedCharInt];
-            backsaceString += "\b";
+            backspaceString += "\b";
             System.out.println( "The sequence is: " );
             for ( char color : sequence.toCharArray() ) {
                 System.out.print( color );
