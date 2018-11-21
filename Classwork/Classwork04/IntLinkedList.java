@@ -3,6 +3,7 @@
 * Editor: Moriah Tolliver
 * Purpose: Demonstrate mechanics of a Linked List
 ************************************************/
+
 public class IntLinkedList {
 
       private Node head;
