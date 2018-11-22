@@ -24,11 +24,11 @@ class Simon {
         while ( correctGuess ) {
             int addedCharInt = (int)(Math.floor( Math.random() * 4 ));
             sequence += colorInts[addedCharInt];
-
-            System.out.print( "\rThe sequence is: " );
+            backspaceString += "\b";
+            System.out.println( "The sequence is: " );
             for ( char color : sequence.toCharArray() ) {
                 System.out.print( color );
-                backspaceString += "\r";
+                backspaceString += "\b";
                 try {
                     Thread.sleep( 1000 );
                 }
@@ -37,7 +37,7 @@ class Simon {
                 }
             }
             System.out.print( backspaceString );
-            System.out.print( "Enter the sequence: " );
+            System.out.print("\n Enter the sequence: " );
             inputGuess = inputScanner.next();
 
             if ( inputGuess.equals(sequence) ) {
