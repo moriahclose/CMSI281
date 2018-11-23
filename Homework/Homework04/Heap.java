@@ -10,6 +10,9 @@ public class Heap {
     private int maxSize;        // size of array
     private int currentSize;    // number of nodes in array
 
+    /**
+     * Internal class for Node creation
+     */
     private class Node {
         private int iData; // data item (key)
 
@@ -26,16 +29,28 @@ public class Heap {
         }
     }
 
-    public Heap( int mx ) {       // constructor
+    /**
+     * Constructor
+     * @param int maximum size of the heap
+     */
+    public Heap( int mx ) {
         maxSize = mx;
         currentSize = 0;
         heapArray = new Node[maxSize]; // create array
     }
 
+    /**
+     * Return if heap is empty
+     * @return boolean true if heap is empty, false otherwise
+     */
     public boolean isEmpty() {
         return currentSize == 0;
     }
 
+    /**
+     * Insert value into heap
+     * @return false if heap is full, true otherwise
+     */
     public boolean insert( int key ) {
         if( currentSize == maxSize ) {
             return false;
@@ -46,6 +61,10 @@ public class Heap {
         return true;
     }
 
+    /**
+     * Move node upward in heap until it is correctly placed
+     * @param int index of node to move
+     */
     public void trickleUp( int index ) {
         int parent = (index-1) / 2;
         Node bottom = heapArray[index];
@@ -59,6 +78,10 @@ public class Heap {
         heapArray[index] = bottom;
     }
 
+    /**
+     * Remove Node with maximum key value
+     * @return Node removed
+     */
     public Node remove() {
         Node root = heapArray[0];
         heapArray[0] = ( currentSize > 0 ) ? heapArray[--currentSize] : heapArray[0];
@@ -66,18 +89,34 @@ public class Heap {
         return root;
     }
 
+    /**
+     * Get Node with maximum key value
+     * @return Node with maximum key value
+     */
     public int getRoot() {
         return heapArray[0].getKey();
     }
 
+    /**
+     * Get size of the heap
+     * @return int number of nodes in the heap
+     */
     public int size() {
         return currentSize;
     }
 
+    /**
+     * Get array representation of the heap
+     * @return Node[] representation of the heap
+     */
     public Node[] getArrayRep() {
         return heapArray;
     }
 
+    /**
+     * Move node downward in heap until it is correctly placed
+     * @param int index of node to move
+     */
     public void trickleDown( int index ) {
         int largerChild;
         Node top = heapArray[index];
@@ -102,6 +141,12 @@ public class Heap {
         heapArray[index] = top;
     }
 
+    /**
+     * Change value of Node and place Node in correct place in heap
+     * @param int index of Node to change value of
+     * @param int int value to change Node to
+     * @return false if index is invalid, true otherwise
+     */
     public boolean change( int index, int newValue ) {
         if( index < 0 || index >= currentSize ) {
             return false;
@@ -119,6 +164,9 @@ public class Heap {
         return true;
     }
 
+    /**
+     * Display contents and arrangement of heap
+     */
     public void displayHeap() {
         System.out.print("heapArray: ");
         for( int m = 0; m < currentSize; m++ ) {
@@ -164,82 +212,12 @@ public class Heap {
         System.out.println( "\n" + dots + dots );
     }
 
+    /**
+     * Get key value of Node
+     * @param Node to get value of
+     * @return int key value of input node
+     */
     public int getNodeKey( Node n ) {
         return n.getKey();
     }
 }
-// class HeapApp {
-//
-//     public static void main( String[] args ) throws IOException {
-//         int value, value2;
-//         Heap theHeap = new Heap(31);
-//         boolean success;
-//
-//         theHeap.insert(70);
-//         theHeap.insert(40);
-//         theHeap.insert(50);
-//         theHeap.insert(20);
-//         theHeap.insert(60);
-//         theHeap.insert(100);
-//         theHeap.insert(80);
-//         theHeap.insert(30);
-//         theHeap.insert(10);
-//         theHeap.insert(90);
-//
-//         while( true ) {
-//             System.out.print( "Enter first letter of " );
-//             System.out.print( "show, insert, remove, change: " );
-//             int choice = getChar();
-//             switch( choice ) {
-//                 case 's':
-//                     theHeap.displayHeap();
-//                     break;
-//                 case 'i':
-//                     System.out.print( "Enter value to insert: " );
-//                     value = getInt();
-//                     success = theHeap.insert( value );
-//                     if ( !success ) {
-//                         System.out.println( "Can't insert; heap full" );
-//                     }
-//                     break;
-//                 case 'r':
-//                     if ( !theHeap.isEmpty() ) {
-//                         theHeap.remove();
-//                     }
-//                     else {
-//                         System.out.println( "Can't remove; heap empty" );
-//                     }
-//                     break;
-//                 case 'c':
-//                     System.out.print( "Enter current index of item: " );
-//                     value = getInt();
-//                     System.out.print( "Enter new key: " );
-//                     value2 = getInt();
-//                     success = theHeap.change( value , value2 );
-//                     if ( !success ) {
-//                         System.out.println( "Invalid index" );
-//                     }
-//                     break;
-//                 default:
-//                     System.out.println( "Invalid entry\n" );
-//                 }
-//             }
-//         }
-//
-//     public static String getString() throws IOException {
-//         InputStreamReader isr = new InputStreamReader( System.in );
-//         BufferedReader br = new BufferedReader(isr);
-//         String s = br.readLine();
-//         return s;
-//     }
-//
-//     public static char getChar() throws IOException {
-//         String s = getString();
-//         return s.charAt(0);
-//     }
-//
-//     public static int getInt() throws IOException {
-//         String s = getString();
-//         return Integer.parseInt(s);
-//     }
-// }
