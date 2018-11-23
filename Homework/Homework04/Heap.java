@@ -3,29 +3,28 @@ Author: Robert Lafore
 Editors: Moriah Tolliver and Tapiwa Tafa
 Purpose: Demonstrates heaps
 ***********************************************************************/
-
 import java.io.*;
-
-class Node {
-    private int iData; // data item (key)
-
-    public Node( int key ) {
-        iData = key;
-    }
-
-    public int getKey() {
-        return iData;
-    }
-
-    public void setKey( int id ) {
-        iData = id;
-    }
-}
 
 public class Heap {
     private Node[] heapArray;
     private int maxSize;        // size of array
     private int currentSize;    // number of nodes in array
+
+    private class Node {
+        private int iData; // data item (key)
+
+        public Node( int key ) {
+            iData = key;
+        }
+
+        public int getKey() {
+            return iData;
+        }
+
+        public void setKey( int id ) {
+            iData = id;
+        }
+    }
 
     public Heap( int mx ) {       // constructor
         maxSize = mx;
@@ -62,9 +61,21 @@ public class Heap {
 
     public Node remove() {
         Node root = heapArray[0];
-        heapArray[0] = heapArray[--currentSize];
+        heapArray[0] = ( currentSize > 0 ) ? heapArray[--currentSize] : heapArray[0];
         trickleDown(0);
         return root;
+    }
+
+    public int getRoot() {
+        return heapArray[0].getKey();
+    }
+
+    public int size() {
+        return currentSize;
+    }
+
+    public Node[] getArrayRep() {
+        return heapArray;
     }
 
     public void trickleDown( int index ) {
@@ -152,80 +163,83 @@ public class Heap {
         }
         System.out.println( "\n" + dots + dots );
     }
-}
 
-class HeapApp {
-
-    public static void main( String[] args ) throws IOException {
-        int value, value2;
-        Heap theHeap = new Heap(31);
-        boolean success;
-
-        theHeap.insert(70);
-        theHeap.insert(40);
-        theHeap.insert(50);
-        theHeap.insert(20);
-        theHeap.insert(60);
-        theHeap.insert(100);
-        theHeap.insert(80);
-        theHeap.insert(30);
-        theHeap.insert(10);
-        theHeap.insert(90);
-
-        while( true ) {
-            System.out.print( "Enter first letter of " );
-            System.out.print( "show, insert, remove, change: " );
-            int choice = getChar();
-            switch( choice ) {
-                case 's':
-                    theHeap.displayHeap();
-                    break;
-                case 'i':
-                    System.out.print( "Enter value to insert: " );
-                    value = getInt();
-                    success = theHeap.insert( value );
-                    if ( !success ) {
-                        System.out.println( "Can't insert; heap full" );
-                    }
-                    break;
-                case 'r':
-                    if ( !theHeap.isEmpty() ) {
-                        theHeap.remove();
-                    }
-                    else {
-                        System.out.println( "Can't remove; heap empty" );
-                    }
-                    break;
-                case 'c':
-                    System.out.print( "Enter current index of item: " );
-                    value = getInt();
-                    System.out.print( "Enter new key: " );
-                    value2 = getInt();
-                    success = theHeap.change( value , value2 );
-                    if ( !success ) {
-                        System.out.println( "Invalid index" );
-                    }
-                    break;
-                default:
-                    System.out.println( "Invalid entry\n" );
-                }
-            }
-        }
-
-    public static String getString() throws IOException {
-        InputStreamReader isr = new InputStreamReader( System.in );
-        BufferedReader br = new BufferedReader(isr);
-        String s = br.readLine();
-        return s;
-    }
-
-    public static char getChar() throws IOException {
-        String s = getString();
-        return s.charAt(0);
-    }
-
-    public static int getInt() throws IOException {
-        String s = getString();
-        return Integer.parseInt(s);
+    public int getNodeKey( Node n ) {
+        return n.getKey();
     }
 }
+// class HeapApp {
+//
+//     public static void main( String[] args ) throws IOException {
+//         int value, value2;
+//         Heap theHeap = new Heap(31);
+//         boolean success;
+//
+//         theHeap.insert(70);
+//         theHeap.insert(40);
+//         theHeap.insert(50);
+//         theHeap.insert(20);
+//         theHeap.insert(60);
+//         theHeap.insert(100);
+//         theHeap.insert(80);
+//         theHeap.insert(30);
+//         theHeap.insert(10);
+//         theHeap.insert(90);
+//
+//         while( true ) {
+//             System.out.print( "Enter first letter of " );
+//             System.out.print( "show, insert, remove, change: " );
+//             int choice = getChar();
+//             switch( choice ) {
+//                 case 's':
+//                     theHeap.displayHeap();
+//                     break;
+//                 case 'i':
+//                     System.out.print( "Enter value to insert: " );
+//                     value = getInt();
+//                     success = theHeap.insert( value );
+//                     if ( !success ) {
+//                         System.out.println( "Can't insert; heap full" );
+//                     }
+//                     break;
+//                 case 'r':
+//                     if ( !theHeap.isEmpty() ) {
+//                         theHeap.remove();
+//                     }
+//                     else {
+//                         System.out.println( "Can't remove; heap empty" );
+//                     }
+//                     break;
+//                 case 'c':
+//                     System.out.print( "Enter current index of item: " );
+//                     value = getInt();
+//                     System.out.print( "Enter new key: " );
+//                     value2 = getInt();
+//                     success = theHeap.change( value , value2 );
+//                     if ( !success ) {
+//                         System.out.println( "Invalid index" );
+//                     }
+//                     break;
+//                 default:
+//                     System.out.println( "Invalid entry\n" );
+//                 }
+//             }
+//         }
+//
+//     public static String getString() throws IOException {
+//         InputStreamReader isr = new InputStreamReader( System.in );
+//         BufferedReader br = new BufferedReader(isr);
+//         String s = br.readLine();
+//         return s;
+//     }
+//
+//     public static char getChar() throws IOException {
+//         String s = getString();
+//         return s.charAt(0);
+//     }
+//
+//     public static int getInt() throws IOException {
+//         String s = getString();
+//         return Integer.parseInt(s);
+//     }
+// }
