@@ -1,8 +1,8 @@
-/****************************************************************************
+/********************************************************************************************************************************
 Authors: Moriah Tolliver and Tapiwa Tafa
 Purpose: Demonstrates in-order tree traversal
-Note: In-order traversal method adapted from B.J. Johnson Class Notes Week 9
-****************************************************************************/
+Note: In-order traversal method adapted from B.J. Johnson Class Notes Week 9 (https://bjohnson.lmu.build/cmsi281web/week09.html)
+********************************************************************************************************************************/
 public class Node {
     public int data;
     public Node leftChild;
