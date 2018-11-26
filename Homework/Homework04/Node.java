@@ -1,20 +1,40 @@
+/****************************************************************************
+Authors: Moriah Tolliver and Tapiwa Tafa
+Purpose: Demonstrates in-order tree traversal
+Note: In-order traversal method adapted from B.J. Johnson Class Notes Week 9
+****************************************************************************/
 public class Node {
     public int data;
     public Node leftChild;
     public Node rightChild;
 
+    /**
+     * Constructor
+     */
     public Node( int inputData ) {
         data = inputData;
     }
 
+    /**
+     * Inserts left child node with input data value
+     * @param int value to insert
+     */
     public void insertLeft( int inputData ) {
         leftChild = new Node( inputData );
     }
 
+    /**
+     * Inserts right child node with input data value
+     * @param int value to insert
+     */
     public void insertRight( int inputData ) {
         rightChild = new Node( inputData );
     }
 
+    /**
+     * Displays in-order traversal of tree starting with given root node
+     * @param Node root of subtree to print traversal of
+     */
     public void inOrderTraversal( Node currentNode ) {
         if( currentNode == null ) {
             return;
@@ -24,6 +44,9 @@ public class Node {
         inOrderTraversal( currentNode.rightChild );
     }
 
+    /**
+     * Main used for testing
+     */
     public static void main( String args[] ) {
         System.out.println( "To help with testing, all trees have been constructed so that their in-order traversals produce a list sorted in ascending order." );
         System.out.println( "__________Testing in order traversal with binary search tree__________");
@@ -84,7 +107,5 @@ public class Node {
         root6.rightChild.insertLeft( 62 );
         root6.rightChild.leftChild.insertRight( 68 );
         root6.inOrderTraversal( root6 );
-
-
     }
 }
