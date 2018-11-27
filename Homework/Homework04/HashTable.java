@@ -1,7 +1,6 @@
 /********************************************************************************************************************************
 Authors: Moriah Tolliver and Tapiwa Tafa
 Purpose: Demonstrates hash table data structure
-Note: Input values in the table are both the key and the data value
 ********************************************************************************************************************************/
 import java.util.*;
 import java.io.*;
@@ -11,11 +10,18 @@ public class HashTable {
     private int size;
     private int DIVISOR = 17;
 
+    /**
+     * Constructor
+     */
     public HashTable() {
         table = new ArrayList<String>();
         size = 0;
     }
 
+    /**
+     * Make array list have a minimum size
+     * @param int minimum size to make array list
+     */
     public void ensureSize( int minimumSize ) {
         if ( table.size() == minimumSize ) {
             return;
@@ -33,6 +39,11 @@ public class HashTable {
 
     }
 
+    /**
+     * Insert key using hashing function
+     * @param String string serving as key
+     * @throws Exception IllegalArgumentException if key contains characters other than letters
+     */
     public void insert( String inputString ) throws IllegalArgumentException {
         if ( table.indexOf( inputString.toLowerCase() ) > -1 ) {
             return;
@@ -56,10 +67,20 @@ public class HashTable {
         table.set( index , inputString );
     }
 
+    /**
+     * Return if hash table contains a value
+     * @param String value to search for
+     * @return boolean true if value is in the hash table, false otherwise
+     */
     public boolean contains( String value ) {
         return ( table.indexOf( value.toLowerCase() ) > -1 );
     }
 
+    /**
+     * Remove value from hash table
+     * @param String value to remove
+     * @return boolean true if value is successfully removed, false otherwise
+     */
     public boolean remove( String value ) {
         boolean removed = table.remove( value );
         if ( removed ) {
@@ -68,10 +89,18 @@ public class HashTable {
         return removed;
     }
 
+    /**
+     * Return number of elements in the hash table
+     * @return int number of elements in the hash table
+     */
     public int size() {
         return size;
     }
 
+    /**
+     * Return string representation of the hash table
+     * @return string represent hash table with '--' representing null
+     */
     public String toString() {
         String returnString = "";
         for ( String value : table ) {
@@ -80,6 +109,9 @@ public class HashTable {
         return returnString;
     }
 
+    /**
+     * Main used for testing
+     */
     public static void main( String args[] ) {
         HashTable table = new HashTable();
         System.out.println( "------------TESTING INSERT------------" );
