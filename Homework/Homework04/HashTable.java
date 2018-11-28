@@ -1,12 +1,12 @@
 /********************************************************************************************************************************
 Authors: Moriah Tolliver and Tapiwa Tafa
-Purpose: Demonstrates hash table data structure
+Purpose: Demonstrates hash table data structure and folding-digit hash function
 ********************************************************************************************************************************/
 import java.util.*;
 import java.io.*;
 
 public class HashTable {
-    private ArrayList<String> table;
+    private ArrayList<Object> table;
     private int size;
     private int DIVISOR = 17;
 
@@ -14,7 +14,7 @@ public class HashTable {
      * Constructor
      */
     public HashTable() {
-        table = new ArrayList<String>();
+        table = new ArrayList<Object>();
         size = 0;
     }
 
@@ -42,21 +42,37 @@ public class HashTable {
     /**
      * Insert key using hashing function
      * @param String string serving as key
-     * @throws Exception IllegalArgumentException if key contains characters other than letters
+     * @throws Exception IllegalArgumentException if key is string and contains characters other than letters
      */
-    public void insert( String inputString ) throws IllegalArgumentException {
-        if ( table.indexOf( inputString.toLowerCase() ) > -1 ) {
-            return;
+    public void insert( Object input ) throws IllegalArgumentException {
+        int index;
+        if ( input.getClass().equals( String.class ) ) {
+            String inputString = input.toString();
+            if ( table.indexOf( inputString.toLowerCase() ) > -1 ) {
+                return;
+            }
+            index = hashCode( inputString );
+        }
+        else if ( input.getClass().equals( Integer.class ) ) {
+            index = foldHashCode( Integer.parseInt( input.toString() ) );
+        }
+        else {
+            throw new IllegalArgumentException();
         }
 
-        int index = hashCode( inputString );
         ensureSize( index + 1);
         while ( table.get( index ) != null ) {
             index++;
             ensureSize( index + 1 );
         }
         ensureSize( index + 1 );
-        table.set( index , inputString );
+
+        if ( input.getClass().equals( String.class ) ) {
+            table.set( index , input.toString() );
+        }
+        else {
+            table.set( index , Integer.parseInt( input.toString() ) );
+        }
         size++;
     }
 
@@ -79,6 +95,26 @@ public class HashTable {
         int index = inputStringValue % DIVISOR;
 
         return index;
+    }
+
+    /**
+     * Uses digit folding to generate hash code for input number
+     * @param int number to generate hash code for
+     * @return int hash code of input number
+     */
+    private int foldHashCode( int inputNumber ) {
+        String numberString = Integer.toString( inputNumber );
+        int chunkLength = 3;
+        int hashCode = 0;
+
+        while ( numberString.length() >= 3 ) {
+            hashCode += Integer.parseInt( numberString.substring( 0 , 3) );
+            numberString = numberString.substring( 3 );
+        }
+        if ( numberString.length() > 0 ) {
+            hashCode += Integer.parseInt( numberString );
+        }
+        return hashCode % DIVISOR;
     }
 
     /**
@@ -117,7 +153,7 @@ public class HashTable {
      */
     public String toString() {
         String returnString = "";
-        for ( String value : table ) {
+        for ( Object value : table ) {
             returnString += ( value != null ) ? " " + value + " " : " " + "--" + " ";
         }
         return returnString;
@@ -198,5 +234,39 @@ public class HashTable {
         System.out.println( "   Removing 'ad' results in the hash table of size " +  table.size() );
         System.out.println( "   hash table: " + table.toString() );
 
+        System.out.println( "\n------------TESTING FOLDING-DIGIT HASH------------" );
+        HashTable myNums = new HashTable();
+        System.out.println( "   Inserting 103, 107, 109, 113, 127" );
+        myNums.insert( 103 );
+        System.out.println( "   hash code for 103: " + myNums.foldHashCode( 103 ) );
+        myNums.insert( 107 );
+        System.out.println( "   hash code for 107: " + myNums.foldHashCode( 107 ) );
+        myNums.insert( 109 );
+        System.out.println( "   hash code for 109: " + myNums.foldHashCode( 109 ) );
+        myNums.insert( 113 );
+        System.out.println( "   hash code for 113: " + myNums.foldHashCode( 113 ) );
+        myNums.insert( 127 );
+        System.out.println( "   hash code for 127: " + myNums.foldHashCode( 127 ) );
+        System.out.println( "   hash table: " + myNums.toString() );
+
+        System.out.println( "\n   Inserting 0" );
+        myNums.insert( 0 );
+        System.out.println( "   hash code for 0: " + myNums.foldHashCode( 0 ) );
+        System.out.println( "   hash table: " + myNums.toString() );
+
+        System.out.println( "\n   Inserting 123456" );
+        myNums.insert( 123456 );
+        System.out.println( "   hash code for 123456: " + myNums.foldHashCode( 123456 ) );
+        System.out.println( "   hash table: " + myNums.toString() );
+
+        System.out.println( "\n   Inserting 9876543" );
+        myNums.insert( 9876543 );
+        System.out.println( "   hash code for 9876543: " + myNums.foldHashCode( 9876543 ) );
+        System.out.println( "   hash table: " + myNums.toString() );
+
+        System.out.println( "\n   Inserting 20" );
+        myNums.insert( 20 );
+        System.out.println( "   hash code for 20: " + myNums.foldHashCode( 20 ) );
+        System.out.println( "   hash table: " + myNums.toString() );
     }
 }
