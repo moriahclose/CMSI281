@@ -48,6 +48,25 @@ public class HashTable {
         if ( table.indexOf( inputString.toLowerCase() ) > -1 ) {
             return;
         }
+
+        int index = hashCode( inputString );
+        ensureSize( index + 1);
+        while ( table.get( index ) != null ) {
+            index++;
+            ensureSize( index + 1 );
+        }
+        ensureSize( index + 1 );
+        table.set( index , inputString );
+        size++;
+    }
+
+    /**
+     * Generates hash code for input string
+     * @param String to generate hash code for
+     * @return int hash code for string
+     * @throws IllegalArgumentException if input string contains characters other than letters
+     */
+    private int hashCode( String inputString ) throws IllegalArgumentException {
         int inputStringValue = 0;
         char[] stringCharArray = inputString.toLowerCase().toCharArray();
         for ( char character : stringCharArray ) {
@@ -56,15 +75,10 @@ public class HashTable {
             }
             inputStringValue += character;
         }
-        size++;
+
         int index = inputStringValue % DIVISOR;
-        ensureSize( index + 1);
-        while ( table.get( index ) != null ) {
-            index++;
-            ensureSize( index + 1 );
-        }
-        ensureSize( index + 1 );
-        table.set( index , inputString );
+
+        return index;
     }
 
     /**
@@ -122,7 +136,6 @@ public class HashTable {
         table.insert( "melioration" );
         table.insert( "demystify" );
         System.out.println( "   hash table: " + table.toString() );
-        System.out.println( "size: " + table.size() );
 
         System.out.println( "\nINSERT VALUES THAT INITIALLY HAVE EQUAL HASH CODES" );
         table.insert( "ad" );
@@ -157,7 +170,6 @@ public class HashTable {
             System.out.println( "   UhOh! Input value 'HELLO' should have been converted to lower case then inserted, but instead an error was thrown." );
         }
         System.out.println( "   hash table: " + table.toString() );
-        System.out.println( "size: " + table.size() );
 
         System.out.println( "\n------------TESTING CONTAINS------------" );
         System.out.println( "   hash table: " + table.toString() );
