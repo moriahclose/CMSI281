@@ -3,6 +3,7 @@ Name: Moriah Tolliver         Date: 01/15/18          Purpose: Greet the user
 Referenced Greeter.java from my own CMSI186 repository
 ******************************************************************************/
 import java.util.Scanner;
+//hey 
 
 public class SayHello {
    public static void main( String args[] ) {
