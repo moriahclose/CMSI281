@@ -1,2 +1,4 @@
-# Moriah Tolliver's CMSI281 Repository
+# CMSI 281 Data Structures
+
+Classwork and Homework Assignments
 
